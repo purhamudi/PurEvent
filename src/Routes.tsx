@@ -9,7 +9,7 @@ export default function pCreateBrowserRouter() {
   return createBrowserRouter(
     [
       {
-        path: "",
+        path: "*",
         element: <ComingSoon />,
       },
       // {
