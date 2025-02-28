@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer base {
+  :root {
+    --background: (249, 249, 249, 1);
+    --foreground: rgba(33, 37, 41, 1); /* Dark gray */
+    --muted: rgba(237, 242, 247, 1); /* Light gray */
+    --muted-foreground: rgba(110, 118, 129, 1);
+    --popover: rgba(255, 255, 255, 1);
+    --popover-foreground: rgba(33, 37, 41, 1);
+    --border: rgba(221, 221, 221, 1);
+    --input: rgba(221, 221, 221, 1);
+    --card: rgba(255, 255, 255, 1);
+    --card-foreground: rgba(33, 37, 41, 1);
+    --primary: rgba(33, 37, 41, 1);
+    --primary-foreground: rgba(245, 245, 245, 1);
+    --secondary: rgba(237, 242, 247, 1);
+    --secondary-foreground: rgba(33, 37, 41, 1);
+    --accent: rgba(237, 242, 247, 1);
+    --accent-foreground:  rgba(1, 149, 210, 1);
+    --destructive: rgba(255, 0, 0, 1);
+    --destructive-foreground: rgba(245, 245, 245, 1);
+    --ring: rgba(130, 130, 130, 1);
+    --radius: 0.5rem;
+
+    --brand-50: #e6f7fd;
+    --brand-100: #cceffd;
+    --brand-200: #99dffb;
+    --brand-300: #66cff9;
+    --brand-400: #33bff6;
+    --brand-500: #0195D2;
+    --brand-600: #017eb2;
+    --brand-700: #016690;
+    --brand-800: #004d6e;
+    --brand-900: #00334b;
+  }
+
+  .dark {
+    --background: rgba(10, 25, 47, 1);
+    --foreground: rgba(200, 200, 200, 1);
+    --muted: rgba(30, 30, 30, 1);
+    --muted-foreground: rgba(140, 140, 140, 1);
+    --accent: rgba(40, 40, 40, 1);
+    --accent-foreground: rgba(245, 245, 245, 1);
+    --popover: rgba(10, 25, 47, 1);
+    --popover-foreground: rgba(130, 130, 130, 1);
+    --border: rgba(50, 50, 50, 1);
+    --input: rgba(50, 50, 50, 1);
+    --card: rgba(10, 25, 47, 1);
+    --card-foreground: rgba(200, 200, 200, 1);
+    --primary: rgba(245, 245, 245, 1);
+    --primary-foreground: rgba(15, 15, 15, 1);
+    --secondary: rgba(30, 30, 30, 1);
+    --secondary-foreground: rgba(245, 245, 245, 1);
+    --destructive: rgba(200, 0, 0, 1);
+    --destructive-foreground: rgba(245, 245, 245, 1);
+    --ring: rgba(50, 50, 50, 1);
+
+    --brand-50: #e6f7fd;
+    --brand-100: #cceffd;
+    --brand-200: #99dffb;
+    --brand-300: #66cff9;
+    --brand-400: #33bff6;
+    --brand-500: #0195D2;
+    --brand-600: #017eb2;
+    --brand-700: #016690;
+    --brand-800: #004d6e;
+    --brand-900: #00334b;
+
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

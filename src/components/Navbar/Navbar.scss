@@ -1,0 +1,149 @@
+@use "@/styles/variables.scss" as *;
+
+.navbar {
+    height: $header-height;
+    display: flex;
+    justify-content: space-between; /* Spaces the nav links and logo */
+    align-items: center;
+    padding: 1rem;
+    // background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+
+  .logo-link{
+    min-width: 140px;
+    max-height: 40px;
+  }
+
+  .nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .nav-links li {
+    margin-right: 20px;
+    white-space: nowrap;
+  }
+  
+  .nav-links a {
+    // color: white;
+    text-decoration: none;
+    font-weight: bold;
+    &.active{
+      text-decoration: underline;
+      color: $theme-color-brand;
+    }
+  }
+  
+  
+  .logo img {
+    height: 40px; /* Adjust logo size as needed */
+  }
+
+
+
+
+
+
+
+
+
+
+
+  /* Navbar.css */
+.navbar {
+  // background-color: #f0f0f0; /* Example background color */
+  padding: 1rem; /* Example padding */
+  position: relative; /* Needed for positioning the hamburger */
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between; /* Distribute logo and links */
+  align-items: center; /* Vertically align items */
+  max-width: 1200px; /* Optional: Set a maximum width for the navbar */
+  margin: 0 auto; /* Center the navbar */
+  width: 100%;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.navbar-links {
+  display: flex; /* Arrange links horizontally */
+}
+
+.navbar-link {
+  margin-left: 1rem;
+  text-decoration: none;
+  // color: #333; /* Example link color */
+}
+
+.hamburger {
+  display: none; /* Hide the hamburger on larger screens */
+  // background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburger-line {
+  width: 25px;
+  height: 3px;
+  // background-color: #AAA;
+  margin: 5px 0;
+}
+
+/* Media query for smaller screens */
+// @media (max-width: 614px) { /* Adjust the breakpoint as needed */
+//   .navbar-links {
+//     // display: none; /* Hide links by default on small screens */
+//     flex-direction: column; /* Stack links vertically */
+//     position: absolute;
+//     top: 100%; /* Position below the navbar */
+//     left: 0;
+//     width: 100%;
+//     background-color: #333; /* Match navbar background */
+//     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow */
+//     z-index: 1; /* Ensure it's above other content */
+//     min-height: 0;
+//     height: 0;
+//     transition: min-height 1s;
+//     overflow: hidden;
+//     // li{
+//     //   text-align: center;
+//     //   margin: 1em 0;
+//     // }
+//   }
+
+//   .navbar-links.active {
+//     // display: flex; /* Show links when the hamburger is clicked */
+//     min-height: 300px;
+//     .navbar-link{
+//       display: block;
+//     }
+//   }
+
+//   .navbar-link {
+//     margin: 1rem 0; /* Add vertical margin */
+//     // padding: 1rem; /* Add some padding to links */
+//     display: block; /* Make links take full width */
+//     text-align: center;
+//     display: none;
+//   }
+
+//   .hamburger {
+//     display: block; /* Show the hamburger on small screens */
+//   }
+
+//   .nav-links{
+//     flex-direction: column;
+//   }
+// }

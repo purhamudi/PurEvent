@@ -1,0 +1,36 @@
+@use "@/styles/variables.scss" as *;
+
+.app_wrapper{
+    // height: 100vh;
+}
+.main_app_wrapper{
+    // margin-top: $header-height;
+    // overflow: auto;
+    height: auto;
+    min-height: $body-height;
+    height: calc(100vh - $header-height);
+
+    display: flex;
+    flex-direction: column;
+}
+
+.header_container{
+    height: $header-height;
+    position: sticky;
+    z-index: 1;
+}
+
+.main_app_wrapper{
+    // justify-content: space;
+}
+.body-content{
+    // flex:1;
+}
+
+.footer_container{
+    height: $footer-height;
+}
+// body{
+//     width: 100vw;
+//     height: 100vh;
+// }
