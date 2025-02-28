@@ -1,13 +1,29 @@
+import { Minus, Plus } from "lucide-react";
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
-import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
-import ScrollToTop from "../hooks/ScrollToTop";
-import React, { ReactNode, useState } from "react";
-import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "../components/ui/drawer";
+import Navbar from "../components/Navbar/Navbar";
 import { Button } from "../components/ui/button";
-import { Minus, Plus} from "lucide-react";
-import { SheetClose, Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle } from "../components/ui/sheet";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+} from "../components/ui/drawer";
 import { Input } from "../components/ui/input";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+} from "../components/ui/sheet";
+import ScrollToTop from "../hooks/ScrollToTop";
 
 export function Layout() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -20,11 +36,20 @@ export function Layout() {
     <>
       <div className="app_wrapper text-[var(--foreground)]">
         <div id="header-navbar" className="header_container sticky top-0">
-          <Navbar setIsCartOpen={setIsCartOpen} setIsDrawerOpen={setIsDrawerOpen}></Navbar>
-          <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-          <ContactUsDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
+          <Navbar
+            setIsCartOpen={setIsCartOpen}
+            setIsDrawerOpen={setIsDrawerOpen}
+          ></Navbar>
+          <CartDrawer
+            isOpen={isCartOpen}
+            onClose={() => setIsCartOpen(false)}
+          />
+          <ContactUsDrawer
+            isOpen={isDrawerOpen}
+            onClose={() => setIsDrawerOpen(false)}
+          />
         </div>
-        
+
         <div className="main_app_wrapper">
           <div className="body-content">
             <Outlet />
@@ -39,19 +64,14 @@ export function Layout() {
   );
 }
 
+type ContactUsDrawerProps = { isOpen: boolean; onClose: () => void };
+export function ContactUsDrawer({ isOpen, onClose }: ContactUsDrawerProps) {
+  const [goal, setGoal] = React.useState(350);
 
-
-
-
-
-type ContactUsDrawerProps={ isOpen: boolean; onClose: () => void }
-export function ContactUsDrawer({ isOpen, onClose }:ContactUsDrawerProps) {
-  const [goal, setGoal] = React.useState(350)
- 
   function onClick(adjustment: number) {
-    setGoal(Math.max(200, Math.min(400, goal + adjustment)))
+    setGoal(Math.max(200, Math.min(400, goal + adjustment)));
   }
- 
+
   return (
     <Drawer open={isOpen} onOpenChange={onClose}>
       {/* {children} */}
@@ -117,23 +137,30 @@ export function ContactUsDrawer({ isOpen, onClose }:ContactUsDrawerProps) {
         </div>
       </DrawerContent>
     </Drawer>
-  )
+  );
 }
-
-
-
 
 // type CartDrawerProps = {
 //   isOpen: boolean;
 //   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 // };
-export function CartDrawer({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+export function CartDrawer({
+  isOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+}) {
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
-      <SheetContent side="right"> {/* Opens from the right */}
+      <SheetContent side="right">
+        {" "}
+        {/* Opens from the right */}
         <SheetHeader>
           <SheetTitle>Your Cart</SheetTitle>
-          <SheetDescription>Review your items before checkout.</SheetDescription>
+          <SheetDescription>
+            Review your items before checkout.
+          </SheetDescription>
         </SheetHeader>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
