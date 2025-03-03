@@ -1,33 +1,67 @@
 import { useEffect, useState } from "react";
-import { useOrderNow } from "../OrderNowContext/OrderNowContext";
+import { toast } from "sonner";
+import { Button } from "../../../../components/ui/button";
 import {
+  DialogClose,
   DialogContent,
-  DialogHeader,
-  DialogTitle,
   DialogDescription,
   DialogFooter,
-  DialogClose,
-} from "../../../components/ui/dialog";
-import { Input } from "../../../components/ui/input";
-import { Textarea } from "../../../components/ui/textarea";
-import { Button } from "../../../components/ui/button";
+  DialogHeader,
+  DialogTitle,
+} from "../../../../components/ui/dialog";
+import { Input } from "../../../../components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../components/ui/select";
-import { toast } from "sonner";
+} from "../../../../components/ui/select";
+import { Textarea } from "../../../../components/ui/textarea";
+import { useOrderNow } from "../OrderNowContext/OrderNowContext";
+
+interface FormData {
+  postalCode:string
+  deliveryDate:Date | undefined
+  deliveryTime:string
+  peopleCount:string
+  budgetPerPerson:string
+  eventType:string
+  moreDetails:string
+}
+
+const generateTimeSlots = () => {
+  const times = [];
+  let hour = 9;
+  let minute = 0;
+
+  while (hour < 20 || (hour === 20 && minute === 0)) {
+    const formattedHour = hour.toString().padStart(2, "0");
+    const formattedMinute = minute.toString().padStart(2, "0");
+    times.push(`${formattedHour}:${formattedMinute}`);
+
+    // Increment by 30 minutes
+    minute += 30;
+    if (minute === 60) {
+      minute = 0;
+      hour++;
+    }
+  }
+
+  return times;
+};
+
+const timeSlots = generateTimeSlots();
+
 
 export default function OrderNowModal() {
   const { orderNowDetails, setOrderNowDetails } = useOrderNow();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // ✅ Prefill form with existing context data
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     postalCode: "",
-    deliveryDate: "",
+    deliveryDate: undefined,
     deliveryTime: "",
     peopleCount: "",
     budgetPerPerson: "",
@@ -39,7 +73,7 @@ export default function OrderNowModal() {
   useEffect(() => {
     setFormData({
       postalCode: orderNowDetails?.postalCode || "",
-      deliveryDate: orderNowDetails?.deliveryDate || "",
+      deliveryDate: orderNowDetails?.deliveryDate || undefined,
       deliveryTime: orderNowDetails?.deliveryTime || "",
       peopleCount: orderNowDetails?.peopleCount || "",
       budgetPerPerson: orderNowDetails?.budgetPerPerson || "",
@@ -50,7 +84,7 @@ export default function OrderNowModal() {
 
   // ✅ Handle input changes
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -99,7 +133,7 @@ export default function OrderNowModal() {
       </DialogHeader>
 
       {/* ✅ Scrollable Form Area */}
-      <div className="mt-4 space-y-3 text-gray-700 max-h-[60vh] overflow-y-auto px-2">
+      <div className="mt-4 space-y-3 text-gray-700 max-h-[60vh] overflow-y-auto px-3">
         {/* Postal Code (Required) */}
         <div>
           <label className="font-semibold">
@@ -117,38 +151,35 @@ export default function OrderNowModal() {
         {/* Delivery Date (Required) */}
         <div>
           <label className="font-semibold">
-            Lieferdatum <span className="text-red-500">*</span>
-          </label>
-          <Input
-            type="date"
-            name="deliveryDate"
-            value={formData.deliveryDate}
-            onChange={handleChange}
-            required
-            disabled={isSubmitting}
-          />
-        </div>
-
-        {/* Delivery Time (Required) */}
-        <div>
-          <label className="font-semibold">
             Lieferfenster <span className="text-red-500">*</span>
           </label>
-          <Input
-            type="time"
-            name="deliveryTime"
-            value={formData.deliveryTime}
-            onChange={handleChange}
-            required
-            disabled={isSubmitting}
-          />
+          <div className="flex items-center border border-gray-300 rounded-lg px-3 py-1 w-full bg-gray-50">
+            <div className="w-full py-2 flex">
+              {/* <Clock className="h-6 w-6 text-gray-600 absolute" /> */}
+              <select
+                name="deliveryTime"
+                value={formData.deliveryTime}
+                onChange={handleChange}
+                required
+                disabled={isSubmitting}
+                className="border-none bg-transparent focus:ring-0 text-gray-700 px-2 w-full cursor-pointer text-gray-700 px-2 w-full"
+              >
+                <option value="" disabled>
+                  Lieferzeit wählen
+                </option>
+                {timeSlots.map((time) => (
+                  <option key={time} value={time}>
+                    {time}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
         </div>
 
         {/* Number of People (Required) */}
         <div>
-          <label className="font-semibold">
-            Personenanzahl <span className="text-red-500">*</span>
-          </label>
+          <label className="font-semibold">Personenanzahl <span className="text-red-500">*</span></label>
           <Input
             type="number"
             name="peopleCount"
@@ -156,6 +187,7 @@ export default function OrderNowModal() {
             onChange={handleChange}
             required
             disabled={isSubmitting}
+            onWheel={(e) => e.currentTarget.blur()}
           />
         </div>
 
@@ -168,6 +200,7 @@ export default function OrderNowModal() {
             value={formData.budgetPerPerson}
             onChange={handleChange}
             disabled={isSubmitting}
+            onWheel={(e) => e.currentTarget.blur()}
           />
         </div>
 

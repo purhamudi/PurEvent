@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState } from "react";
 
 interface OrderNowDetails {
   postalCode?: string;
-  deliveryDate?: string;
+  deliveryDate?: Date;
   deliveryTime?: string;
   peopleCount?: string;
   budgetPerPerson?: string;

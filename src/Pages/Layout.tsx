@@ -25,7 +25,7 @@ import {
 } from "../components/ui/sheet";
 import ScrollToTop from "../hooks/ScrollToTop";
 
-export function Layout() {
+export default function Layout() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
@@ -37,7 +37,6 @@ export function Layout() {
       <div className="app_wrapper text-[var(--foreground)]">
         <div id="header-navbar" className="header_container sticky top-0">
           <Navbar
-            setIsCartOpen={setIsCartOpen}
             setIsDrawerOpen={setIsDrawerOpen}
           ></Navbar>
           <CartDrawer

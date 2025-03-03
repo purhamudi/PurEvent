@@ -2,7 +2,7 @@ import { createRoot } from "react-dom/client";
 import { Toaster } from "sonner";
 import App from "./App.tsx";
 import "./index.css";
-import { OrderNowProvider } from "./sections/OrderNow/OrderNowContext/OrderNowContext.tsx";
+import { OrderNowProvider } from "./sections/Homepage/OrderNow/OrderNowContext/OrderNowContext.tsx";
 // import { BrowserRouter } from 'react-router-dom'
 // import AppRoutes from './Routes.tsx'
 

@@ -1,11 +1,10 @@
-import logo from "./assets/logos/logo.png";
-// import Text from './components/Library/Text/Text.component';
-
 import { motion } from "framer-motion"; // Import Framer Motion
+import { JSX } from "react";
+import logo from "./assets/logos/logo.png"; // Ensure correct path
 
-function ComingSoon() {
+const ComingSoon: React.FC = (): JSX.Element => {
   return (
-    <div className="h-screen flex flex-col justify-center items-center bg-brand-50 text-center px-6">
+    <div className="h-screen flex flex-col justify-center items-center bg-gray-50 text-center px-6">
       {/* Logo with Animation */}
       <motion.div
         initial={{ opacity: 0, y: -22 }}
@@ -15,14 +14,6 @@ function ComingSoon() {
       >
         <img src={logo} alt="Logo" className="w-56 md:w-96" />
       </motion.div>
-
-      {/* Animated Text */}
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.7 }}
-        className="text-2xl md:text-3xl font-semibold text-gray-700 my-4"
-      ></motion.h1>
 
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
@@ -34,6 +25,6 @@ function ComingSoon() {
       </motion.h1>
     </div>
   );
-}
+};
 
 export default ComingSoon;

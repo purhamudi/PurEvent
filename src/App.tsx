@@ -1,9 +1,9 @@
-import './App.css'
-import { RouterProvider } from 'react-router-dom';
-import './styles/styles.scss'
-import './styles/fonts.scss'
 import { useMemo } from 'react';
-import pCreateBrowserRouter from './Routes';
+import { RouterProvider } from 'react-router-dom';
+import './App.css';
+import { pCreateBrowserRouter } from './Routes';
+import './styles/fonts.scss';
+import './styles/styles.scss';
 
 function App() {
   const router = useMemo(()=>pCreateBrowserRouter(),[]);
