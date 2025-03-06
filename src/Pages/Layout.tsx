@@ -26,7 +26,7 @@ import {
 import ScrollToTop from "../hooks/ScrollToTop";
 
 export default function Layout() {
-  const [isCartOpen, setIsCartOpen] = useState(false);
+  // const [isCartOpen, setIsCartOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   // function handleContactUsClick(){
@@ -35,14 +35,8 @@ export default function Layout() {
   return (
     <>
       <div className="app_wrapper text-[var(--foreground)]">
-        <div id="header-navbar" className="header_container sticky top-0">
-          <Navbar
-            setIsDrawerOpen={setIsDrawerOpen}
-          ></Navbar>
-          <CartDrawer
-            isOpen={isCartOpen}
-            onClose={() => setIsCartOpen(false)}
-          />
+        <div id="header-navbar" className="header_container sticky top-0 z-10">
+          <Navbar></Navbar>
           <ContactUsDrawer
             isOpen={isDrawerOpen}
             onClose={() => setIsDrawerOpen(false)}

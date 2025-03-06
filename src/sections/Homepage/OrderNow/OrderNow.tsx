@@ -179,7 +179,7 @@ export default function OrderNow() {
             </DialogTrigger>
 
             {/* Order Details Modal */}
-            <OrderNowModal />
+            <OrderNowModal setModalOpen={setModalOpen}/>
           </Dialog>
         </form>
       </div>
