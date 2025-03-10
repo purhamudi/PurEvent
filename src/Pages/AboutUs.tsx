@@ -1,114 +1,123 @@
 // import { Parallax } from "react-parallax";
 // import Text from "../components/Library/Text/Text.component";
-import { useEffect, useState } from "react";
-import bgImg4 from "../assets/images/background/dump/image.jpg";
-import bgImg1 from "../assets/images/background/dump/pexels-photo-529621.jpeg";
-import bgImg2 from "../assets/images/background/dump/pexels-photo-597909.jpeg";
-import bgImg3 from "../assets/images/background/dump/pexels-photo-714666.jpeg";
-import bgImg5 from "../assets/images/background/dump/premium_photo-1673483585933-93ab140492d3.jpeg";
+import { JSX, useEffect, useRef, useState } from "react";
 // import Button from "../components/Library/Button/Button.component";
+import { TypographyH2, TypographyP } from "../components/ui/typography";
+
+import { default as imgSection1, default as imgSection2, default as imgSection3 } from '../assets/images/aboutus/img-food.jpeg';
 
 type section = {
   id: string;
-  strength: number;
-  header: string;
-  text: string;
-  img: string;
+  title:JSX.Element,
+  body: JSX.Element,
+  image:JSX.Element,
+  strength?: number;
+  header?: string;
+  text?: string;
+  img?: string;
   button?: string;
 };
 const parallaxSections: section[] = [
   {
-    id: "about-us-1",
-    strength: 500,
-    header:
-      "WIR SIND EINE DER SPEZIALISIERTESTEN BÜRO- KULTURVERBESSERER - EVENT - AGENTUREN FÜR UNTERNEHMEN.",
-    text: "Sagen andere auch über sich.",
-    img: bgImg1,
+    id:'section1',
+    title: <TypographyH2>WIR SIND EINE DER spezialisiertesten BÜRO-KULTURVERBESSERER - Agenturen für Office-Catering.</TypographyH2>,
+    body: <TypographyP>Sagen andere auch über sich.</TypographyP>,
+    image: <img src={imgSection1} alt="Placeholder" className="rounded-lg object-cover w-full h-auto lg:h-full" />,
   },
   {
-    id: "about-us-2",
-    strength: 200,
-    header: "WIR PLANEN, ORGANISIEREN UND SETZEN UM.",
-    text: "Klar, das machen viele.",
-    img: bgImg2,
+    id:'section2',
+    title: <TypographyH2>WIR PLANEN, ORGANISIEREN UND SETZEN UM.</TypographyH2>,
+    body: <TypographyP>Klar, das machen viele.</TypographyP>,
+    image: <img src={imgSection2} alt="Placeholder" className="rounded-lg object-cover w-full h-auto lg:h-full" />,
   },
   {
-    id: "about-us-3",
-    strength: 750,
-    header: "TIMMT, ABER WIR MACHEN ESGREIFBARER",
-    text: "Persönlicher. Nahbarer. Echter. Wir sind kein anonymer Dienstleister, sondern euer treue Partner, der mitdenkt, mitfühlt und mitreißt.",
-    img: bgImg3,
+    id:'section3',
+    title: <TypographyH2>STIMMT, ABER WIR bringen frischen Wind in die Office-Kultur – und auf den Teller.</TypographyH2>,
+    body: <TypographyP>Denn mit einem clever durchdachten Business-Catering sorgen wir nicht nur für Genuss, sondern auch für Motivation, kreative Pausen und eine Atmosphäre, in der Teams gemeinsam wachsen.</TypographyP>,
+    image: <img src={imgSection3} alt="Placeholder" className="rounded-lg object-cover w-full h-auto lg:h-full" />,
   },
   {
-    id: "about-us-4",
-    strength: 500,
-    header: "UND WIR ARBEITEN MIT DENBESTEN.",
-    text: "Egal ob mediterranes Buffet, asiatisches Fingerfood oder ein wilder Mix aus allem – wir machen es möglich! Unser breites Netzwerk aus exzellenten Restaurantpartnern gibt uns die Freiheit, Catering genau nach euren Vorstellungen zu gestalten. Für ein Catering, das überrascht, begeistert und einfach passt.",
-    img: bgImg4,
+    id:'section4',
+    title: <TypographyH2>denn WIR ARBEITEN MIT DEN BESTEN.</TypographyH2>,
+    body: <TypographyP>Egal ob moderne arabische Spezialitäten, asiatisches Fingerfood oder ein wilder Mix aus allem – wir machen es möglich! Unser Netzwerk aus exzellenten Restaurantpartnern gibt uns die Freiheit, Catering genau nach euren Vorstellungen zu gestalten. Für ein Catering, das überrascht, begeistert und einfach passt.</TypographyP>,
+    image: <img src={imgSection3} alt="Placeholder" className="rounded-lg object-cover w-full h-auto lg:h-full" />,
   },
   {
-    id: "about-us-5",
-    strength: 720,
-    header: "IN DÜSSELDORF UND ÜBERALL, WO IHR UNS BRAUCHT.",
-    text: "Ob Düsseldorf oder Umgebung – wir sind da, wo euer Event stattfindet.",
-    img: bgImg5,
+    id:'section5',
+    title: <TypographyH2>In Düsseldorf UND ÜBERALL, WO IHR UNS BRAUCHT.</TypographyH2>,
+    body: <TypographyP>Ob Düsseldorf oder Umgebung – wir sind da, wo euer Event stattfindet.</TypographyP>,
+    image: <img src={imgSection3} alt="Placeholder" className="rounded-lg object-cover w-full h-auto lg:h-full" />,
   },
   {
-    id: "about-us-6",
-    strength: 220,
-    header: "UND ERFAHREN SIND WIR AUCH.",
-    text: "Mit mehr als 13 Jahren Expertise in der Gastronomie, Eventmanagement und Catering wissen wir genau, worauf es ankommt.",
-    img: bgImg5,
+    id:'section6',
+    title: <TypographyH2>WIR HALTEN UNS FÜR BESONDERS, WEIL WIR ES PERSÖNLICH NEHMEN.</TypographyH2>,
+    body: <TypographyP>Weil wir lieber anpacken als nur reden. Weil wir echt sind und verbindlich. Weil wir für das brennen, was wir tun. Weil wir nicht nur versprechen, sondern liefern. Und weil wir als Team füreinander da sind und gemeinsam wachsen. Das ist PureEvent – zuverlässig, engagiert, echt.</TypographyP>,
+    image: <img src={imgSection3} alt="Placeholder" className="rounded-lg object-cover w-full h-auto lg:h-full" />,
   },
   {
-    id: "about-us-7",
-    strength: 420,
-    header: "FÜR UNTERNEHMEN, DIE MEHR WOLLEN ALS EIN 08/15 EVENT..",
-    text: "Ob Team-Events, Firmenfeiern oder Business- Catering – wir stärken Teams, bringen Mitarbeiter zusammen und machen das Büro wieder zum Erlebnis.",
-    img: bgImg5,
-  },
-  {
-    id: "about-us-8",
-    strength: 620,
-    header: "WIR HALTEN UNS FÜR BESONDERS. WEIL WIR ES PERSÖNLICH NEHMEN.",
-    text: "Weil wir zuhören, verstehen und individuell beraten. Weil wir Events lieben. Weil wir lieber machen, statt nur zu labern. Und weil wir ein kreativer Haufen sind, der sich durch gemeinsame Werte und unerschütterliche Teamarbeit auszeichnet. So sind wir – ganz ehrlich!",
-    img: bgImg5,
-    button: "Lass uns dein Projekt besprechen",
+    id:'section7',
+    title: <TypographyH2>UND ERFAHREN SIND WIR AUCH.</TypographyH2>,
+    body: (
+      <div>
+        <TypographyP>Mit über 13 Jahren in der Gastronomie, Eventmanagement und Catering haben wir ganz schön viel erlebt.</TypographyP>
+        <div className="mt-6 flex flex-col gap-4">
+          <button className="px-6 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700">Du planst was Cooles? Erzählt uns davon!</button>
+          <button className="px-6 py-2 bg-gray-300 text-black rounded-lg shadow-md hover:bg-gray-400">Lass uns dein Projekt besprechen</button>
+        </div>
+      </div>
+    ),
+    image: <img src={imgSection3} alt="Placeholder" className="rounded-lg object-cover w-full h-auto lg:h-full" />,
   },
 ];
+
 export default function AboutUs() {
+  const container = useRef<HTMLDivElement | null>(null);
+  
   useEffect(() => {
     setTimeout(() => {
-      window.scrollTo(0, 0);
+      container.current?.scrollTo(0, 0);
     }, 20);
   }, []);
 
+
+  const scrollToSection = (index: number) => {
+    const element = document.getElementById(parallaxSections[index].id);
+    if (element) {
+      const offset = 80; // Adjust this value to set the desired offset
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+
+    }
+  };
+
   return (
-    <div>
-      <PaginationDots sections={parallaxSections} />
-      <div>
-        {/* {parallaxSections.map((section, index) => (
-        <Parallax
-        key={index}
-        blur={1}
-        bgImage={section.img}
-          strength={section.strength}
-          bgImageStyle={{ backgroundPosition: 'center center' }} 
-        //   style={{position: 'relative', overflow: 'hidden'}}
-        >
-          <div id={section.id} className="h-100 flex justify-center align-center flex-col items-center px-12">
-            <Text type="h3">{section.header}</Text>
-            <Text type="p" variant="primary">{section.text}</Text>
-            {section.button && <Button className="underline">{section.button}</Button>}
-          </div>
-        </Parallax>
-      ))} */}
-      </div>
+    <div ref={container} className="overflow-y-auto">
+      <PaginationDots sections={parallaxSections} scrollToSection={scrollToSection} />
+        {parallaxSections.map((section, index) => {
+          return (
+              <div key={section.id} id={section.id} className="flex flex-col md:flex-row items-center justify-center gap-12 p-12">
+                <div className={`w-full lg:w-1/2 text-center lg:text-left max-w-xl ${index % 2 === 0 ? "order-1" : "order-2"}`}>
+                  {section.title}
+                  {section.body}
+                </div>
+                <div className={`w-full lg:w-1/2 flex justify-center h-auto lg:h-full md:${index % 2 === 0 ? "order-2" : "order-1"}`}>
+                  {section.image}
+                </div>
+              </div>
+              )
+            })
+        }
+
     </div>
   );
 }
 
-function PaginationDots({ sections }: { sections: section[] }) {
+function PaginationDots({ sections, scrollToSection }: { sections: section[]; scrollToSection: (index: number) => void }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -136,14 +145,11 @@ function PaginationDots({ sections }: { sections: section[] }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (index: number) => {
-    document.getElementById(sections[index].id)?.scrollIntoView({
-      behavior: "smooth",
-      block: "end",
-      inline: "nearest",
-    });
+  const scrollTo =(index: number)=>{
+    scrollToSection(index)
     setActiveIndex(index);
-  };
+  }
+
 
   return (
     <div className="fixed right-5 top-1/2 transform -translate-y-1/2 flex flex-col gap-2.5 justify-center z-10">
@@ -153,7 +159,7 @@ function PaginationDots({ sections }: { sections: section[] }) {
           className={`w-2 h-2 rounded-full transition-all p-1 shadow-sm ${
             index === activeIndex ? "bg-gray-800 w-1 h-4" : "bg-gray-400"
           }`}
-          onClick={() => scrollToSection(index)}
+          onClick={() => scrollTo(index)}
         />
       ))}
     </div>

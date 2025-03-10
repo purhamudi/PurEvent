@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import ComingSoon from "./ComingSoon";
-import Layout from "./Pages/Layout";
-import HomePage from "./Pages/HomePage";
 import AboutUs from "./Pages/AboutUs";
+import HomePage from "./Pages/HomePage";
+import Layout from "./Pages/Layout";
 import NotFound from "./Pages/NotFound";
 
 export function pCreateBrowserRouter() {
@@ -11,10 +11,10 @@ export function pCreateBrowserRouter() {
       path: "",
       element: <ComingSoon />,
     },
-    {
-      path: "*",
-      element: <ComingSoon />,
-    },
+    // {
+    //   path: "*",
+    //   element: <ComingSoon />,
+    // },
     {
       path: "v1",
       element: <Layout />,

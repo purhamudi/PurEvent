@@ -44,7 +44,7 @@ export default function Layout() {
         </div>
 
         <div className="main_app_wrapper">
-          <div className="body-content">
+          <div className="body-content grow">
             <Outlet />
           </div>
           <div className="footer_container bg-[var(--card)] border-t border-[var(--border)]">

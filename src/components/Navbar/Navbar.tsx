@@ -5,23 +5,22 @@ import logo from "../../assets/logos/logo.png";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "../ui/breadcrumb";
 import "./Navbar.scss";
 
-
 const navbarLinks = [
   {
     title: "About Us",
-    href: "/docs/primitives/alert-dialog",
+    href: "/v1/uber-uns",
     description:
       "Learn more about our mission, values, and commitment to excellence.",
   },
   {
     title: "Gallery",
-    href: "/docs/primitives/hover-card",
+    href: "/v1/gallery",
     description:
       "Explore a curated collection of our finest moments and events.",
   },
   {
     title: "Contact Us",
-    href: "/docs/primitives/progress",
+    href: "/v1/kontakt",
     description:
       "Get in touch with us for inquiries, collaborations, or support.",
   },
@@ -66,16 +65,17 @@ const Navbar: React.FC = () => {
         <BreadcrumbList>
         {navbarLinks.map((item, idx)=>{
           
-          return <><BreadcrumbItem>
+          return <React.Fragment key={idx}>
+                <BreadcrumbItem >
                   <BreadcrumbLink asChild>
-                    <Link to="/v1">{item.title}</Link>
+                    <Link to={item.href}>{item.title}</Link>
                   </BreadcrumbLink>
                 </BreadcrumbItem>
                 {idx !== navbarLinks.length-1 &&
                 <BreadcrumbSeparator>
                   <Slash />
                 </BreadcrumbSeparator>}
-                </>
+                </ React.Fragment>
 
         })}
         </BreadcrumbList>

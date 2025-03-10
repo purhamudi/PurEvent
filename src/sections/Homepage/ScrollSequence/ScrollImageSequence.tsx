@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 
-// import img from '../../../assets/images/background/dump/videos/test/'
-const frameCount = 160; // Adjust based on how many images you have
+
+const frameCount = 160;
 const images = Array.from(
   { length: frameCount },
   (_, i) =>
-    `../../../assets/images/background/dump/videos/test/vid_${String(
+    `assets/images/background/dump/videos/test/vid_${String(
       i + 1
     ).padStart(4, "0")}.png`
 );
