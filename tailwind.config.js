@@ -76,15 +76,20 @@ module.exports = {
 					"0%": { opacity: "1", transform: "translateY(0)" },
 					"100%": { opacity: "0", transform: "translateY(-10px)" },
 				},
-				scaleUp: {
-					'0%': { transform: 'scale(0)' },
-					'100%': { transform: 'scale(1)' },
+				// scaleUp: {
+				// 	'0%': { transform: 'scale(0)' },
+				// 	'100%': { transform: 'scale(1)' },
+				//   },
+				  float: {
+					"0%, 75%": { transform: "translateY(0)" },
+					"54%": { transform: "translateY(-10px)" },
 				  },
 			},
 			animation: {
 				"fade-in": "fadeIn 320ms ease-in-out",
 				"fade-out": "fadeOut 320ms ease-in-out",
-				scaleUp: 'scaleUp 600ms ease-in-out 1.5s forwards',
+				// scaleUp: 'scaleUp 600ms ease-in-out 1.5s forwards',
+				float: "float 3.2s ease-in-out infinite",
 
 			},
 		}

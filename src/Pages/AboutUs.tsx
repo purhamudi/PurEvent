@@ -64,36 +64,7 @@ const parallaxSections: section[] = [
 
 export default function AboutUs() {
   const container = useRef<HTMLDivElement | null>(null);
-  // const parallaxRef = useRef<HTMLSpanElement | null>(null);
-  // const scaleRef = useRef<HTMLSpanElement | null>(null);
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     if (scaleRef.current) {
-  //       const rect = scaleRef.current.getBoundingClientRect();
-  //       const windowHeight = window.innerHeight;
-        
-  //       if (rect.top < windowHeight * 0.95 && rect.bottom > windowHeight * 0.45) {
-  //         scaleRef.current.style.transform = "scale(1)";
-  //         scaleRef.current.style.transition = "transform 0.3s ease-in-out";
-  //       } else {
-  //         scaleRef.current.style.transform = "scale(0)";
-  //       }
-  //     }
-
-  //     if (parallaxRef.current) {
-  //       const scrollY = window.scrollY;
-  //       console.log(scrollY)
-  //       parallaxRef.current.style.willChange = "transform";
-  //       parallaxRef.current.style.transform = `translateY(-${scrollY * 1.1}px)`;
-  //     }
-  //   };
-
-
-
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const scrollToSection = (index: number) => {
     const element = document.getElementById(parallaxSections[index].id);
@@ -113,20 +84,9 @@ export default function AboutUs() {
   return (
     <div ref={container} className="overflow-visible overflow-x-hidden relative z-0 mt-12">
         <div className="min-h-[80vh] min-w-[80vw] w-full absolute -right-0 z-[-1] animate-[scaleUp_800ms_ease-in-out_forwards]">
-
-          {/* <span
-          ref={parallaxRef} 
-            className="h-[100vw] w-[100vw] max-h-[1000px] max-w-[1000px] rounded-full bg-white border border-gray-100 fixed top-28 left-1/2 "
-          ></span> */}
-
-{/* 
-          <span
-            ref={scaleRef}
-            className="h-[100vw] w-[100vw] max-h-[150px] max-w-[150px] rounded-full bg-white border border-gray-100 fixed top-[238%] left-[4%] scale-0 bg-brand-800"
-          ></span> */}
         </div>
 
-        <PaginationDots sections={parallaxSections} scrollToSection={scrollToSection} />
+        <PaginationDots sections={parallaxSections} scrollToSection={scrollToSection} setActiveIndex={setActiveIndex} activeIndex={activeIndex}/>
         {parallaxSections.map((section, index) => {
           return (
             <div className="md:p-4 p-2"  id={section.id}>
@@ -148,13 +108,21 @@ export default function AboutUs() {
               )
             })
         }
+
+        {activeIndex !== parallaxSections.length-1 && <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-10">
+          <button
+            onClick={() => scrollToSection(activeIndex + 1)}
+            className="p-1 text-white transition-all grow-1 focus:ring-0 focus:outline-none w-10 h-10 animate-float flex"
+          >
+            
+            <svg className="w-10 h-10" xmlns="http://www.w3.org/2000/svg" width="96" height="96" fill="#000000" viewBox="0 0 256 256"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
+          </button>
+        </div>}
     </div>
   );
 }
 
-function PaginationDots({ sections, scrollToSection }: { sections: section[]; scrollToSection: (index: number) => void }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-
+function PaginationDots({ sections, scrollToSection, setActiveIndex, activeIndex }: { activeIndex:number; sections: section[]; scrollToSection: (index: number) => void; setActiveIndex: (index: number) => void }) {
   useEffect(() => {
     const handleScroll = () => {
       requestAnimationFrame(() => {
@@ -177,7 +145,7 @@ function PaginationDots({ sections, scrollToSection }: { sections: section[]; sc
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [sections, setActiveIndex]);
 
   const scrollTo =(index: number)=>{
     scrollToSection(index)
@@ -198,4 +166,3 @@ function PaginationDots({ sections, scrollToSection }: { sections: section[]; sc
     </div>
   );
 }
-
