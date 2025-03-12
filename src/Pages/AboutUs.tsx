@@ -64,36 +64,36 @@ const parallaxSections: section[] = [
 
 export default function AboutUs() {
   const container = useRef<HTMLDivElement | null>(null);
-  const parallaxRef = useRef<HTMLSpanElement | null>(null);
-  const scaleRef = useRef<HTMLSpanElement | null>(null);
+  // const parallaxRef = useRef<HTMLSpanElement | null>(null);
+  // const scaleRef = useRef<HTMLSpanElement | null>(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (scaleRef.current) {
-        const rect = scaleRef.current.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (scaleRef.current) {
+  //       const rect = scaleRef.current.getBoundingClientRect();
+  //       const windowHeight = window.innerHeight;
         
-        if (rect.top < windowHeight * 0.95 && rect.bottom > windowHeight * 0.45) {
-          scaleRef.current.style.transform = "scale(1)";
-          scaleRef.current.style.transition = "transform 0.3s ease-in-out";
-        } else {
-          scaleRef.current.style.transform = "scale(0)";
-        }
-      }
+  //       if (rect.top < windowHeight * 0.95 && rect.bottom > windowHeight * 0.45) {
+  //         scaleRef.current.style.transform = "scale(1)";
+  //         scaleRef.current.style.transition = "transform 0.3s ease-in-out";
+  //       } else {
+  //         scaleRef.current.style.transform = "scale(0)";
+  //       }
+  //     }
 
-      if (parallaxRef.current) {
-        const scrollY = window.scrollY;
-        console.log(scrollY)
-        parallaxRef.current.style.willChange = "transform";
-        parallaxRef.current.style.transform = `translateY(-${scrollY * 1.1}px)`;
-      }
-    };
+  //     if (parallaxRef.current) {
+  //       const scrollY = window.scrollY;
+  //       console.log(scrollY)
+  //       parallaxRef.current.style.willChange = "transform";
+  //       parallaxRef.current.style.transform = `translateY(-${scrollY * 1.1}px)`;
+  //     }
+  //   };
 
 
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   const scrollToSection = (index: number) => {
     const element = document.getElementById(parallaxSections[index].id);
@@ -111,7 +111,7 @@ export default function AboutUs() {
   };
 
   return (
-    <div ref={container} className="overflow-visible overflow-x-hidden relative z-0">
+    <div ref={container} className="overflow-visible overflow-x-hidden relative z-0 mt-12">
         <div className="min-h-[80vh] min-w-[80vw] w-full absolute -right-0 z-[-1] animate-[scaleUp_800ms_ease-in-out_forwards]">
 
           {/* <span
@@ -129,9 +129,9 @@ export default function AboutUs() {
         <PaginationDots sections={parallaxSections} scrollToSection={scrollToSection} />
         {parallaxSections.map((section, index) => {
           return (
-            <div className="md:p-8 p-2"  id={section.id}>
+            <div className="md:p-4 p-2"  id={section.id}>
             <SectionFadeIn>
-              <Card className="w-full max-w-5xl shadow-lg border border-gray-200 rounded-lg bg-white min-h-[68vh] flex overflow-hidden">
+              <Card className="w-full max-w-5xl shadow-lg border border-gray-200 rounded-lg bg-white min-h-[63vh] flex overflow-hidden">
 
                 <div key={section.id} className="flex flex-col md:flex-row items-center justify-center gap-10 grow">
                   <div className={`w-full py-8 px-6 lg:w-1/2 text-center lg:text-left max-w-xl ${index % 2 === 0 ? "md:order-1" : "md:order-2"}`}>
