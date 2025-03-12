@@ -7,8 +7,8 @@ const SectionFadeIn: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <div
       ref={ref}
-      className={`opacity-0 translate-y-10 transition-all delay-100 duration-1000 ${
-        isVisible ? "opacity-100 translate-y-0" : ""
+      className={`opacity-0 transition-opacity delay-100 duration-1000 ${
+        isVisible ? "opacity-100" : ""
       }`}
     >
       {children}

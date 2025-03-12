@@ -47,7 +47,7 @@ export default function Layout() {
           <div className="body-content grow">
             <Outlet />
           </div>
-          <div className="footer_container bg-[var(--card)] border-t border-[var(--border)]">
+          <div className="footer_container bg-[var(--card)] border-t border-[var(--border)] z-10">
             <Footer />
           </div>
         </div>
