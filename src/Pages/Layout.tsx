@@ -85,12 +85,12 @@ export function ContactUsDrawer({ isOpen, onClose }: ContactUsDrawerProps) {
               </div>
 
               <div className="flex-[3] space-y-2 text-lg">
-                <h3 className="font-semibold text-xl">Catering & Event-Anfrage</h3>
-                <p>Deine Anfrage in 3 einfachen Schritten:</p>
-                <p>1️⃣ <span className="font-semibold">Anfrage senden:</span> Nutze unser Formular, kontaktiere uns direkt per E-Mail oder WhatsApp.</p>
-                <p>2️⃣ <span className="font-semibold">Beratung & Planung:</span> Wir klären gemeinsam alle Details und erstellen ein maßgeschneidertes Konzept.</p>
-                <p>3️⃣ <span className="font-semibold">Lieferung & Umsetzung:</span> Wir denken mit, planen voraus und sorgen dafür, dass du dich auf das konzentrieren kannst, was wirklich zählt: dein Team und das himmlische Essen.</p>
-                <p>👉 <span className="text-yellow-500">Lass uns dein Projekt besprechen.</span></p>
+                <TypographyH3 className="font-semibold text-xl">Catering & Event-Anfrage</TypographyH3>
+                <TypographyP>Deine Anfrage in 3 einfachen Schritten:</TypographyP>
+                <TypographyP>1️⃣ <span className="font-semibold">Anfrage senden:</span> Nutze unser Formular, kontaktiere uns direkt per E-Mail oder WhatsApp.</TypographyP>
+                <TypographyP>2️⃣ <span className="font-semibold">Beratung & Planung:</span> Wir klären gemeinsam alle Details und erstellen ein maßgeschneidertes Konzept.</TypographyP>
+                <TypographyP>3️⃣ <span className="font-semibold">Lieferung & Umsetzung:</span> Wir denken mit, planen voraus und sorgen dafür, dass du dich auf das konzentrieren kannst, was wirklich zählt: dein Team und das himmlische Essen.</TypographyP>
+                <TypographyP>👉 <span className="text-yellow-500">Lass uns dein Projekt besprechen.</span></TypographyP>
               </div>
             </div>
 
@@ -98,7 +98,7 @@ export function ContactUsDrawer({ isOpen, onClose }: ContactUsDrawerProps) {
             {/* <Button>Submit</Button> */}
             <Button variant="link" className="bg-black text-white py-2 px-4 mt-4 rounded">Kontakt Formular</Button>
             <DrawerClose asChild>
-              <Button variant="outline">Cancel</Button>
+              <Button variant="outline" className="text-black">Cancel</Button>
             </DrawerClose>
           </DrawerFooter>
         </div>
