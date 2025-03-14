@@ -88,7 +88,7 @@ export default function OrderNow() {
   }
 
   return (
-    <div className="w-full flex justify-center p-6">
+    <div className="w-full flex justify-center md:p-6">
       <div className="w-full sm:w-10/12 lg:w-11/12 bg-white shadow-lg rounded-xl p-4 sm:p-6 lg:p-4 z-10">
         <form
           onSubmit={handleSubmit(handleFormSubmit)}

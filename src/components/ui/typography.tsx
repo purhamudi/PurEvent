@@ -11,6 +11,33 @@ export const TypographyH2: React.FC<TypographyProps> = ({ className, ...props })
   <h2 className={cn("scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0", className)} {...props} />
 );
 
+export const TypographyH3: React.FC<TypographyProps> = ({ className, ...props }) => (
+  <h3 className={cn("scroll-m-20 text-2xl font-semibold tracking-tight", className)} {...props} />
+);
+
+export const TypographyH4: React.FC<TypographyProps> = ({ className, ...props }) => (
+  <h4 className={cn("scroll-m-20 text-xl font-semibold tracking-tight", className)} {...props} />
+);
+
+export const TypographyH5: React.FC<TypographyProps> = ({ className, ...props }) => (
+  <h5 className={cn("scroll-m-20 text-lg font-medium tracking-tight", className)} {...props} />
+);
+
+export const TypographyH6: React.FC<TypographyProps> = ({ className, ...props }) => (
+  <h6 className={cn("scroll-m-20 text-base font-medium tracking-tight", className)} {...props} />
+);
+
+export const TypographySmall: React.FC<TypographyProps> = ({ className, ...props }) => (
+  <small className={cn("text-sm font-medium leading-none", className)} {...props} />
+);
+
+export const TypographyMuted: React.FC<TypographyProps> = ({ className, ...props }) => (
+  <p className={cn("text-sm text-gray-500", className)} {...props} />
+);
+
 export const TypographyP: React.FC<TypographyProps> = ({ className, ...props }) => (
   <p className={cn("leading-7 [&:not(:first-child)]:mt-6", className)} {...props} />
+);
+export const TypographyA: React.FC<React.AnchorHTMLAttributes<HTMLAnchorElement>> = ({ className, ...props }) => (
+  <a className={cn("text-blue-600 hover:underline", className)} {...props} />
 );

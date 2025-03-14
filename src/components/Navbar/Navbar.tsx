@@ -1,8 +1,9 @@
 import { Slash } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom"; // ✅ Fixed import
+import { Link, NavLink } from "react-router-dom"; // ✅ Fixed import
 import logo from "../../assets/logos/logo.png";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "../ui/breadcrumb";
+import { Button } from "../ui/button";
 import "./Navbar.scss";
 
 const navbarLinks = [
@@ -18,23 +19,27 @@ const navbarLinks = [
     description:
       "Explore a curated collection of our finest moments and events.",
   },
-  {
-    title: "Contact Us",
-    href: "/v1/kontakt",
-    description:
-      "Get in touch with us for inquiries, collaborations, or support.",
-  },
+  // {
+  //   title: "Contact Us",
+  //   href: "/v1/kontakt",
+  //   description:
+  //     "Get in touch with us for inquiries, collaborations, or support.",
+  // },
 ];
 
+interface NavbarProps {
+  setIsDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-const Navbar: React.FC = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+const Navbar: React.FC<NavbarProps> = ({setIsDrawerOpen}) => {
+  // const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { pathname } = useLocation(); // ✅ Fixed useLocation usage
+  // const { pathname } = useLocation(); // ✅ Fixed useLocation usage
 
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [pathname]);
+  // useEffect(() => {
+  //   setIsMobileMenuOpen(false);
+  // }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,45 +62,42 @@ const Navbar: React.FC = () => {
         </div>
       </NavLink>
 
-      <div
+      {/* <div
         className={`justify-center navbar-links w-[380px] ${isMobileMenuOpen ? "active" : ""}`}
-      >
+      > */}
 
-        <Breadcrumb>
-        <BreadcrumbList>
+      <Breadcrumb>
+        <BreadcrumbList className="flex-nowrap md:gap-4 gap-0.5">
         {navbarLinks.map((item, idx)=>{
           
           return <React.Fragment key={idx}>
-                <BreadcrumbItem >
-                  <BreadcrumbLink asChild>
-                    <Link to={item.href}>{item.title}</Link>
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                {idx !== navbarLinks.length-1 &&
-                <BreadcrumbSeparator>
-                  <Slash />
-                </BreadcrumbSeparator>}
+                  <BreadcrumbItem >
+                    <BreadcrumbLink asChild>
+                      <Link to={item.href} className="sm:text-sm text-md">{item.title}</Link>
+                    </BreadcrumbLink>
+                  </BreadcrumbItem>
+                  {idx !== navbarLinks.length-1 &&
+                  <BreadcrumbSeparator>
+                    <Slash />
+                  </BreadcrumbSeparator>}
                 </ React.Fragment>
 
         })}
+          <BreadcrumbSeparator>
+            <Slash />
+          </BreadcrumbSeparator>
+          <Button
+                variant={"ghost"}
+                className="sm:text-sm text-md p-0"
+                onClick={() => setIsDrawerOpen(true)}
+              >
+              Kontakt
+          </Button>
         </BreadcrumbList>
       </Breadcrumb>
 
-      </div>
-
-      <button
-        className="hamburger"
-        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-      >
-        <div className="hamburger-line bg-[var(--foreground)]"></div>
-        <div className="hamburger-line bg-[var(--foreground)]"></div>
-        <div className="hamburger-line bg-[var(--foreground)]"></div>
-      </button>
     </nav>
   );
 };
 
 export default Navbar;
-
-
-

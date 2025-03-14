@@ -1,5 +1,4 @@
-import { Minus, Plus } from "lucide-react";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
@@ -23,6 +22,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "../components/ui/sheet";
+import { TypographyA, TypographyH3, TypographyP } from "../components/ui/typography";
 import ScrollToTop from "../hooks/ScrollToTop";
 
 export default function Layout() {
@@ -36,7 +36,7 @@ export default function Layout() {
     <>
       <div className="app_wrapper text-[var(--foreground)]">
         <div id="header-navbar" className="header_container sticky top-0 z-10">
-          <Navbar></Navbar>
+          <Navbar setIsDrawerOpen={setIsDrawerOpen}></Navbar>
           <ContactUsDrawer
             isOpen={isDrawerOpen}
             onClose={() => setIsDrawerOpen(false)}
@@ -59,70 +59,44 @@ export default function Layout() {
 
 type ContactUsDrawerProps = { isOpen: boolean; onClose: () => void };
 export function ContactUsDrawer({ isOpen, onClose }: ContactUsDrawerProps) {
-  const [goal, setGoal] = React.useState(350);
+  // const [goal, setGoal] = React.useState(350);
 
-  function onClick(adjustment: number) {
-    setGoal(Math.max(200, Math.min(400, goal + adjustment)));
-  }
+  // function onClick(adjustment: number) {
+  //   setGoal(Math.max(200, Math.min(400, goal + adjustment)));
+  // }
 
   return (
-    <Drawer open={isOpen} onOpenChange={onClose}>
-      {/* {children} */}
-      <DrawerContent>
-        <div className="mx-auto w-full max-w-sm">
-          <DrawerHeader>
-            <DrawerTitle>Move Goal</DrawerTitle>
-            <DrawerDescription>Set your daily activity goal.</DrawerDescription>
+    <Drawer open={isOpen} onOpenChange={onClose} >
+      <DrawerContent className="">
+        <div className="mx-auto w-full">
+          <DrawerHeader  className="max-w-sm mx-auto text-center align-center">
+            <DrawerTitle>Easy, flexibel & individuell</DrawerTitle>
+            <DrawerDescription>so geht Catering mit PurEvent!</DrawerDescription>
           </DrawerHeader>
-          <div className="p-4 pb-0">
-            <div className="flex items-center justify-center space-x-2">
-              <Button
-                variant="outline"
-                size="icon"
-                className="h-8 w-8 shrink-0 rounded-full"
-                onClick={() => onClick(-10)}
-                disabled={goal <= 200}
-              >
-                <Minus />
-                <span className="sr-only">Decrease</span>
-              </Button>
-              <div className="flex-1 text-center">
-                <div className="text-7xl font-bold tracking-tighter">
-                  {goal}
-                </div>
-                <div className="text-[0.70rem] uppercase text-muted-foreground">
-                  Calories/day
-                </div>
+
+            <div id="dialog-content" className="pt-4 px-6 pb-0 flex flex-col md:flex-row gap-6 overflow-scroll max-h-[480px]">
+              <div className="flex-[2] space-y-2 text-lg">
+                <TypographyH3 className="font-semibold text-xl">📩 So erreichst du uns</TypographyH3>
+                
+                <TypographyP>📧 E-Mail: <Button variant="link" ><TypographyA href="mailto:info@purevent.de" className="">info@purevent.de</TypographyA></Button></TypographyP>
+                <TypographyP>📞 Telefon: <span className="">+49 (0) XXX-XXXXXXX</span></TypographyP>
+                <TypographyP>📱 WhatsApp: <span className="">+49 (0) XXX-XXXXXXX</span></TypographyP>
+                <TypographyP>📍 Standort: <span className="">Düsseldorf</span></TypographyP>
               </div>
-              <Button
-                variant="outline"
-                size="icon"
-                className="h-8 w-8 shrink-0 rounded-full"
-                onClick={() => onClick(10)}
-                disabled={goal >= 400}
-              >
-                <Plus />
-                <span className="sr-only">Increase</span>
-              </Button>
+
+              <div className="flex-[3] space-y-2 text-lg">
+                <h3 className="font-semibold text-xl">Catering & Event-Anfrage</h3>
+                <p>Deine Anfrage in 3 einfachen Schritten:</p>
+                <p>1️⃣ <span className="font-semibold">Anfrage senden:</span> Nutze unser Formular, kontaktiere uns direkt per E-Mail oder WhatsApp.</p>
+                <p>2️⃣ <span className="font-semibold">Beratung & Planung:</span> Wir klären gemeinsam alle Details und erstellen ein maßgeschneidertes Konzept.</p>
+                <p>3️⃣ <span className="font-semibold">Lieferung & Umsetzung:</span> Wir denken mit, planen voraus und sorgen dafür, dass du dich auf das konzentrieren kannst, was wirklich zählt: dein Team und das himmlische Essen.</p>
+                <p>👉 <span className="text-yellow-500">Lass uns dein Projekt besprechen.</span></p>
+              </div>
             </div>
-            <div className="mt-3 h-[120px]">
-              {/* <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={data}>
-                  <Bar
-                    dataKey="goal"
-                    style={
-                      {
-                        fill: "hsl(var(--foreground))",
-                        opacity: 0.9,
-                      } as React.CSSProperties
-                    }
-                  />
-                </BarChart>
-              </ResponsiveContainer> */}
-            </div>
-          </div>
+
           <DrawerFooter>
-            <Button>Submit</Button>
+            {/* <Button>Submit</Button> */}
+            <Button variant="link" className="bg-black text-white py-2 px-4 mt-4 rounded">Kontakt Formular</Button>
             <DrawerClose asChild>
               <Button variant="outline">Cancel</Button>
             </DrawerClose>

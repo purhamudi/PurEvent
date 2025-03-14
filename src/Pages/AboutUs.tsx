@@ -1,9 +1,15 @@
 import { JSX, useEffect, useRef, useState } from "react";
 import { TypographyH2, TypographyP } from "../components/ui/typography";
 
-import { default as imgSection1, default as imgSection3 } from '../assets/images/aboutus/img-food.jpeg';
+import imgSection1 from '../assets/images/aboutus/img-food.jpeg';
+import imgSection2 from '../assets/images/aboutus/img-food2.jpg';
+import imgSection3 from '../assets/images/aboutus/img-food3.jpg';
+import imgSection4 from '../assets/images/aboutus/img-food4.jpg';
+import imgSection5 from '../assets/images/aboutus/img-food5.jpg';
 import { Card } from "../components/ui/card";
 import SectionFadeIn from "../utils/SectionFadeIn";
+// import imgSection6 from '../assets/images/aboutus/img-food.jpeg';
+
 
 type section = {
   id: string;
@@ -27,7 +33,7 @@ const parallaxSections: section[] = [
     id:'section3',
     title: <TypographyH2>STIMMT, ABER WIR bringen frischen Wind in die Office-Kultur – und auf den Teller.</TypographyH2>,
     body: <TypographyP>Denn mit einem clever durchdachten Business-Catering sorgen wir nicht nur für Genuss, sondern auch für Motivation, kreative Pausen und eine Atmosphäre, in der Teams gemeinsam wachsen.</TypographyP>,
-    image: <img src={imgSection3} alt="Placeholder" className="object-cover w-full h-auto lg:h-full" />,
+    image: <img src={imgSection2} alt="Placeholder" className="object-cover w-full h-auto lg:h-full" />,
   },
   {
     id:'section4',
@@ -44,7 +50,7 @@ const parallaxSections: section[] = [
     id:'section6',
     title: <TypographyH2>WIR HALTEN UNS FÜR BESONDERS, WEIL WIR ES PERSÖNLICH NEHMEN.</TypographyH2>,
     body: <TypographyP>Weil wir lieber anpacken als nur reden. Weil wir echt sind und verbindlich. Weil wir für das brennen, was wir tun. Weil wir nicht nur versprechen, sondern liefern. Und weil wir als Team füreinander da sind und gemeinsam wachsen. Das ist PureEvent – zuverlässig, engagiert, echt.</TypographyP>,
-    image: <img src={imgSection3} alt="Placeholder" className="object-cover w-full h-auto lg:h-full" />,
+    image: <img src={imgSection4} alt="Placeholder" className="object-cover w-full h-auto lg:h-full" />,
   },
   {
     id:'section7',
@@ -58,7 +64,7 @@ const parallaxSections: section[] = [
         </div>
       </div>
     ),
-    image: <img src={imgSection3} alt="Placeholder" className="object-cover w-full h-auto lg:h-full" />,
+    image: <img src={imgSection5} alt="Placeholder" className="object-cover w-full h-auto lg:h-full" />,
   },
 ];
 
@@ -91,7 +97,7 @@ export default function AboutUs() {
           return (
             <div className="md:p-4 p-2"  id={section.id}>
             <SectionFadeIn>
-              <Card className="w-full max-w-5xl shadow-lg border border-gray-200 rounded-lg bg-white min-h-[63vh] flex overflow-hidden">
+              <Card className="m-auto w-full max-w-5xl shadow-lg border border-gray-200 rounded-lg bg-white min-h-[63vh] flex overflow-hidden">
 
                 <div key={section.id} className="flex flex-col md:flex-row items-center justify-center gap-10 grow">
                   <div className={`w-full py-8 px-6 lg:w-1/2 text-center lg:text-left max-w-xl ${index % 2 === 0 ? "md:order-1" : "md:order-2"}`}>

@@ -81,8 +81,8 @@ module.exports = {
 				// 	'100%': { transform: 'scale(1)' },
 				//   },
 				  float: {
-					"0%, 75%": { transform: "translateY(0)" },
-					"54%": { transform: "translateY(-10px)" },
+					"0%, 67%": { transform: "translateY(0)" },
+					"47%": { transform: "translateY(-7px)" },
 				  },
 			},
 			animation: {
